@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\WatchMovie;
 
-class UserController extends Controller
+class WatchMovieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        
-        $watch_movies = WatchMovie::where('user_id',\Auth::user()->id)->get();
-        $watch_movies->load('movie');
-        
-        return view('page.user.index',[
-            'watch_movies' => $watch_movies 
-        ]);
+        //
     }
 
     /**

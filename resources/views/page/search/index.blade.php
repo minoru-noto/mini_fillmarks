@@ -50,7 +50,7 @@
                 @if (session('search_miss'))
                     <div class="p-3 mb-3 mt-5 bg-danger text-white w-50 mx-auto  rounded">
                         <div class="text-center">
-                        <i class="fas fa-book-open"></i>  {{ session('search_miss') }}
+                        <i class="fas fa-search-minus"></i>  {{ session('search_miss') }}
                         </div>
                     </div>
                 @endif

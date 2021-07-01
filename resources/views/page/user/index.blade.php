@@ -66,17 +66,18 @@
             <div class="container mt-3" style="height:auto;margin-bottom:100px;">
                     <div class="row ">
                         
-                            <div class="col-md-4 border pt-3">
-                                <div class="text-center">
-                                    <a href="#" >
-                                        <img src="{{asset('img/movie_01.jpg')}}" style="width:180px;height:230px;">
-                                        
-                                    </a>
+                            @foreach($watch_movies as $watch_movie)
+                                <div class="col-md-4 border pt-3">
+                                    <div class="text-center">
+                                        <a href="{{route('search.show',$watch_movie->movie->id)}}" >
+                                            <img src="{{asset($watch_movie->movie->img_url)}}" style="width:180px;height:230px;">
+                                        </a>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <p><a href="{{route('search.show',$watch_movie->movie->id)}}" class="text-dark">{{$watch_movie->movie->name}}</a></p>
+                                    </div>
                                 </div>
-                                <div class="text-center mt-2">
-                                    <p><a href="#" class="text-dark">インセプション</a></p>
-                                </div>
-                            </div>
+                            @endforeach
             
                     </div>
                 </div>

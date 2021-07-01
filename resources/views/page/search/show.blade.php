@@ -41,7 +41,7 @@
                         @foreach($search_results as $search_result)
                             <div class="col-md-4 border pt-3">
                                 <div class="text-center">
-                                    <a href="#" >
+                                    <a href="{{route('search.show',$search_result->id)}}">
                                         <img src="{{asset($search_result->img_url)}}" style="width:180px;height:230px;">
                                         
                                     </a>

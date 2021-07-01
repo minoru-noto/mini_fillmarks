@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\WatchMovie;
 
 class SearchController extends Controller
 {
@@ -67,7 +68,27 @@ class SearchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // dd($request);
+        
+        $repeat_movie = WatchMovie::where('movie_id',$request->movie_id)->get();
+        
+        $repeat_movie_count = count($repeat_movie); 
+        
+        // dd($repeat_movie_count);
+        
+        if($repeat_movie_count == 1){
+            return redirect(route('search.show',$request->movie_id))->with('watch_miss','Miss');
+        }
+        
+        $watch_movie = new WatchMovie();
+        
+        $watch_movie->user_id = $request->input('user_id');
+        $watch_movie->movie_id = $request->input('movie_id');
+        $watch_movie->save();
+        
+        return redirect(route('search.show',$watch_movie->movie_id))->with('watch_success','Good!!');
+        
     }
 
     /**
@@ -78,7 +99,14 @@ class SearchController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd($id);
+        
+        $movie = Movie::find($id);
+        
+        return view('page.search.movie_show',[
+            'movie' => $movie,
+            'id' => $id
+        ]);
     }
 
     /**
