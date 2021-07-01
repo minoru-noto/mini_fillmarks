@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white border border-dark position-relative" style="height:700px;">
+    <div class="bg-white border border-dark position-relative" style="height:auto;">
         
         
         <div class="container mt-3 border-bottom pb-3">
@@ -35,7 +35,53 @@
                     <p><strong>3</strong><a href="#" class="text-dark">フォロー</a></p>
                 </div>
             </div>
+            
                 
+                
+            </div>
+            
+            <div class="container">
+                <div class="row" style="height:60px;">
+                    <div class="col-md-4 bg-warning text-center pt-3">
+                        <p style="margin-bottom:0;">
+                           <i class="fas fa-eye fa-2x"></i>
+                        </p>
+                        <p style="margin-bottom:0;">30</p>
+                    </div>
+                    <div class="col-md-4 bg-warning text-center pt-3" style="opacity:0.7;">
+                        <p style="margin-bottom:0;">
+                            <i class="fas fa-plus-square fa-2x"></i>
+                        </p>
+                        <p style="margin-bottom:0;">30</p>
+                    </div>
+                    <div class="col-md-4 bg-danger text-center pt-3"  style="opacity:0.4;">
+                        <p style="margin-bottom:0;">
+                            <i class="fas fa-heart fa-2x"></i>
+                        </p>
+                        <p style="margin-bottom:0;">30</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container mt-3" style="height:auto;margin-bottom:100px;">
+                    <div class="row ">
+                        
+                            <div class="col-md-4 border pt-3">
+                                <div class="text-center">
+                                    <a href="#" >
+                                        <img src="{{asset('img/movie_01.jpg')}}" style="width:180px;height:230px;">
+                                        
+                                    </a>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <p><a href="#" class="text-dark">インセプション</a></p>
+                                </div>
+                            </div>
+            
+                    </div>
+                </div>
+            
+            <div>
                 
             </div>
 

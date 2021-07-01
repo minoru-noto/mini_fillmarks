@@ -16,7 +16,7 @@ class MoviesTableSeeder extends Seeder
     public function run()
     {
         
-        $goutte = GoutteFacade::request('GET','https://filmarks.com/people/53361');
+        $goutte = GoutteFacade::request('GET','https://filmarks.com/people/80916');
 
         $names = array();
 
@@ -42,6 +42,7 @@ class MoviesTableSeeder extends Seeder
           $maker = $node->text();
             
         });
+        
         
         
         
