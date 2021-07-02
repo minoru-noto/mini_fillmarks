@@ -16,32 +16,32 @@ class MoviesTableSeeder extends Seeder
     public function run()
     {
         
-        $goutte = GoutteFacade::request('GET','https://filmarks.com/people/80916');
+        $goutte = GoutteFacade::request('GET','https://filmarks.com/list/trend?page=3&vie');
 
         $names = array();
 
         $images = array();
         
-        $maker = "";
+        // $maker = "";
         
         
-        $goutte->filter('.c-content-item__title a')->each(function($node) use (&$names){
+        $goutte->filter('.p-content-cassette__title')->each(function($node) use (&$names){
            
           $names[] = $node->text();
             
         });
         
-        $goutte->filter('.c-content-item__jacket img')->each(function($node) use (&$images){
+        $goutte->filter('.p-content-cassette__jacket img')->each(function($node) use (&$images){
            
           $images[] = $node->attr('src');
             
         });
         
-        $goutte->filter('.p-profile__body h2')->each(function($node) use (&$maker){
+        // $goutte->filter('.p-profile__body h2')->each(function($node) use (&$maker){
            
-          $maker = $node->text();
+        //   $maker = $node->text();
             
-        });
+        // });
         
         
         
@@ -52,10 +52,9 @@ class MoviesTableSeeder extends Seeder
             {
                 if($name_key == $image_key){
                     
-                   DB::table('movies')->insert([
+                   DB::table('trends')->insert([
                         'name' => $name,
                         'img_url' => $image,
-                        'maker' => $maker
                     ]);
                     
                 }

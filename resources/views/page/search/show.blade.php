@@ -47,7 +47,7 @@
                                     </a>
                                 </div>
                                 <div class="text-center mt-2">
-                                    <p><a href="#" class="text-dark">{{$search_result->name}}</a></p>
+                                    <p><a href="{{route('search.show',$search_result->id)}}" class="text-dark">{{$search_result->name}}</a></p>
                                 </div>
                             </div>
                         @endforeach

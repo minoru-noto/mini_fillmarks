@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Trend;
 
-class WatchMovieController extends Controller
+class TrendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,12 @@ class WatchMovieController extends Controller
      */
     public function index()
     {
-        //
+     
+        $trends = Trend::paginate(21);   
+        
+        return view('page.trend.index',[
+            'trends' => $trends
+        ]);
     }
 
     /**

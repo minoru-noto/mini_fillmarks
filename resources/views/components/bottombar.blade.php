@@ -5,7 +5,7 @@
            <p class="text-white text-size">Home</p>
        </div>
        <div class="flex-fill bd-highlight text-center pt-2">
-           <a href="" class="text-white"><i class="fas fa-chart-line fa-2x"></i></a>
+           <a href="{{route('trend.index')}}" class="text-white"><i class="fas fa-chart-line fa-2x"></i></a>
            <p class="text-white text-size">Trends</p>
        </div>
        <div class="flex-fill bd-highlight text-center pt-2">

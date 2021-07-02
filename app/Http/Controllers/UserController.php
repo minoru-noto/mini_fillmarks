@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\WatchMovie;
+use App\User;
 
 class UserController extends Controller
 {
@@ -18,8 +19,11 @@ class UserController extends Controller
         $watch_movies = WatchMovie::where('user_id',\Auth::user()->id)->get();
         $watch_movies->load('movie');
         
+        $watch_movies_count = count($watch_movies);
+        
         return view('page.user.index',[
-            'watch_movies' => $watch_movies 
+            'watch_movies' => $watch_movies,
+            'watch_movies_count' => $watch_movies_count
         ]);
     }
 
@@ -52,7 +56,21 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $user = User::find($id);
+        
+        $watch_movies = WatchMovie::where('user_id',$id)->get();
+        $watch_movies->load('movie');
+        
+        $watch_movies_count = count($watch_movies);
+        
+        return view('page.user.show',[
+            'watch_movies' => $watch_movies,
+            'watch_movies_count' => $watch_movies_count,
+            'user' => $user
+        ]);
+        
+        
     }
 
     /**

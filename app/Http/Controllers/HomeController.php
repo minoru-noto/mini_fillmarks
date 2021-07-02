@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Weidner\Goutte\GoutteFacade as GoutteFacade;
+use App\Review;
 
 class HomeController extends Controller
 {
@@ -25,35 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         
-        // $goutte = GoutteFacade::request('GET','https://filmarks.com/people/53361');
-
-        // $names = array();
-
-        // $images = array();
+        $watch_movies = Review::orderBy('created_at','desc')->get();
+        $watch_movies->load('user','movie');
         
-        // $maker = "";
+        // dd($watch_movies);
         
-        
-        // $goutte->filter('.c-content-item__title a')->each(function($node) use (&$names){
-           
-        //   $names[] = $node->text();
-            
-        // });
-        
-        // $goutte->filter('.c-content-item__jacket img')->each(function($node) use (&$images){
-           
-        //   $images[] = $node->attr('src');
-            
-        // });
-        
-        // $goutte->filter('.p-profile__body h2')->each(function($node) use (&$maker){
-           
-        //   $maker = $node->text();
-            
-        // });
-        
-        
-        
-        return view('home');
+        return view('home',[
+            'watch_movies' => $watch_movies
+        ]);
     }
 }

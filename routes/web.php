@@ -28,5 +28,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::resource('user', 'UserController');
     
-
+    Route::resource('review', 'ReviewController');
+    
+    Route::resource('trend', 'TrendController');
+    
 });

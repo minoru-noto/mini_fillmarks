@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\WatchMovie;
+use App\Review;
 
 class SearchController extends Controller
 {
@@ -78,7 +79,7 @@ class SearchController extends Controller
         // dd($repeat_movie_count);
         
         if($repeat_movie_count == 1){
-            return redirect(route('search.show',$request->movie_id))->with('watch_miss','Miss');
+            return redirect(route('search.show',$request->movie_id))->with('watch_miss','既にみている映画です。');
         }
         
         $watch_movie = new WatchMovie();
@@ -87,7 +88,8 @@ class SearchController extends Controller
         $watch_movie->movie_id = $request->input('movie_id');
         $watch_movie->save();
         
-        return redirect(route('search.show',$watch_movie->movie_id))->with('watch_success','Good!!');
+        // return redirect(route('review.show',$watch_movie->movie_id))->with('watch_success','マイページに追加しました。');
+        return redirect(route('review.create', ['id' => $watch_movie->movie_id]));
         
     }
 
@@ -103,9 +105,17 @@ class SearchController extends Controller
         
         $movie = Movie::find($id);
         
+        $reviews = Review::where('movie_id',$id)->get();
+        $reviews->load('user');
+        
+        $reviews_counts = count($reviews);
+        
+        
         return view('page.search.movie_show',[
             'movie' => $movie,
-            'id' => $id
+            'reviews' => $reviews,
+            'reviews_counts' => $reviews_counts,
+            'id' => $id,
         ]);
     }
 

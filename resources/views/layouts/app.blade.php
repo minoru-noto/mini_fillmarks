@@ -50,15 +50,30 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fas fa-bars"></i>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/home">
+                                       <i class="fas fa-home"></i> Home
+                                    </a>
+                                    <a class="dropdown-item" href="/trend">
+                                       <i class="fas fa-chart-line"></i> Trend
+                                    </a>
+                                    <a class="dropdown-item" href="/search">
+                                       <i class="fas fa-search"></i> Search
+                                    </a>
+                                    <a class="dropdown-item" href="/">
+                                       <i class="fas fa-rss-square"></i> News
+                                    </a>
+                                    <a class="dropdown-item" href="/user">
+                                       <i class="fas fa-user"></i> Mypage
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt"></i>  ログアウト
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
